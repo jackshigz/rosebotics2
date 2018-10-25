@@ -9,11 +9,6 @@ import time
 
 def main():
     """ Runs YOUR specific part of the project """
-    run_tests()
-
-def run_tests():
-    robot = rb.Snatch3rRobot()
-    robot.drive_system.go_straight_inches(10)
 
 
 main()
