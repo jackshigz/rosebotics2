@@ -105,7 +105,7 @@ class DriveSystem(object):
         Go straight at the given speed (-100 to 100, negative is backwards)
         for the given number of inches, stopping with the given StopAction.
         """
-        c = 2
+        c = 100
         self.start_moving(duty_cycle_percent,duty_cycle_percent)
         start_spun = self.left_wheel.get_degrees_spun()
         while True:
