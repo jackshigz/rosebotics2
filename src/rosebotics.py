@@ -106,6 +106,7 @@ class DriveSystem(object):
         for the given number of inches, stopping with the given StopAction.
         """
         c = 87
+
         self.left_wheel.reset_degrees_spun()
         self.start_moving(duty_cycle_percent,duty_cycle_percent)
         while True:
