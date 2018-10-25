@@ -146,17 +146,18 @@ class DriveSystem(object):
         where positive is clockwise and negative is counter-clockwise),
         stopping by using the given StopAction.
         """
+        c = 10
         self.left_wheel.reset_degrees_spun()
         self.right_wheel.reset_degrees_spun()
         if degrees>0:
             self.left_wheel.start_spinning(duty_cycle_percent)
             while True:
-                if self.left_wheel.get_degrees_spun() >= degrees:
+                if self.left_wheel.get_degrees_spun() >= degrees*c:
                     break
         if degrees<0:
             self.right_wheel.start_spinning(duty_cycle_percent)
             while True:
-                if self.right_wheel.get_degrees_spun() >= -degrees:
+                if self.right_wheel.get_degrees_spun() >= -degrees*c:
                     break
 
         # TODO: Do a few experiments to determine the constant that converts
