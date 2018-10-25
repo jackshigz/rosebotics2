@@ -132,7 +132,7 @@ class DriveSystem(object):
         self.right_wheel.reset_degrees_spun()
         self.left_wheel.start_spinning(-1 * duty_cycle_percent)
         self.right_wheel.start_spinning(duty_cycle_percent)
-        c = 5
+        c = 4.5
         while True:
 
             if self.right_wheel.get_degrees_spun() >= degrees * c:
