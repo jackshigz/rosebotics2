@@ -105,7 +105,7 @@ class DriveSystem(object):
         Go straight at the given speed (-100 to 100, negative is backwards)
         for the given number of inches, stopping with the given StopAction.
         """
-        c = 10
+        c = 100
         self.left_wheel.reset_degrees_spun()
         self.start_moving(duty_cycle_percent,duty_cycle_percent)
         while True:
@@ -191,13 +191,7 @@ class TouchSensor(rb.TouchSensor):
 
     def wait_until_pressed(self):
         """ Waits (doing nothing new) until the touch sensor is pressed. """
-<<<<<<< HEAD
 
-
-    def wait_until_released(self):
-        """ Waits (doing nothing new) until the touch sensor is released. """
-
-=======
         while True:
             if self.get_value() == 1:
                 break
@@ -210,7 +204,7 @@ class TouchSensor(rb.TouchSensor):
             if self.get_value() == 0:
                 break
         # TODO
->>>>>>> origin/master
+
 
 
 class Camera(object):
