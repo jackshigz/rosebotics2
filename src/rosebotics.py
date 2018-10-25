@@ -105,11 +105,11 @@ class DriveSystem(object):
         Go straight at the given speed (-100 to 100, negative is backwards)
         for the given number of inches, stopping with the given StopAction.
         """
-        c = 100
+        c = 10
+        self.left_wheel.reset_degrees_spun()
         self.start_moving(duty_cycle_percent,duty_cycle_percent)
-        start_spun = self.left_wheel.get_degrees_spun()
         while True:
-            if self.left_wheel.get_degrees_spun() - start_spun > inches*c:
+            if self.left_wheel.get_degrees_spun() > inches*c:
                 self.stop_moving(stop_action)
         # TODO: Do a few experiments to determine the constant that converts
         # TODO:   from wheel-degrees-spun to robot-inches-moved.
