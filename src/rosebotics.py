@@ -130,10 +130,12 @@ class DriveSystem(object):
         # TODO:   Assume that the conversion is linear with respect to speed.
 
         self.right_wheel.reset_degrees_spun()
+        self.left_wheel.start_spinning(-1 * duty_cycle_percent)
+        self.right_wheel.start_spinning(duty_cycle_percent)
+        c = 5
         while True:
-            self.left_wheel.start_spinning(-1 * duty_cycle_percent)
-            self.right_wheel.start_spinning(duty_cycle_percent)
-            if self.right_wheel.get_degrees_spun() >= degrees:
+
+            if self.right_wheel.get_degrees_spun() >= degrees * c:
                 self.stop_moving(stop_action)
 
     def turn_degrees(self,
