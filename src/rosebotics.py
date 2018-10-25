@@ -129,9 +129,12 @@ class DriveSystem(object):
         # TODO:   from wheel-degrees-spun to robot-degrees-spun.
         # TODO:   Assume that the conversion is linear with respect to speed.
 
-        for k in range(degrees):
-            self.start_moving(-1 * duty_cycle_percent, duty_cycle_percent)
-        self.stop_moving(stop_action)
+        initial = self.left_wheel.get_degrees_spun()
+        while True:
+            self.left_wheel.start_spinning(-1 * duty_cycle_percent)
+            self.right_wheel.start_spinning(duty_cycle_percent)
+            if self.left_wheel.get_degrees_spun() - initial == degrees:
+                self.stop_moving(stop_action)
 
     def turn_degrees(self,
                      degrees,
