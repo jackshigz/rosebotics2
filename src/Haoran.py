@@ -27,7 +27,7 @@ def run_test_polygon():
 def run_polygon(n):
     robot = rb.Snatch3rRobot()
     degree = 360/n
-    for k in range(n):
+    for _ in range(n):
         robot.drive_system.go_straight_inches(4)
         robot.drive_system.turn_degrees(degree)
 
