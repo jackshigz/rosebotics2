@@ -149,7 +149,7 @@ class DriveSystem(object):
         where positive is clockwise and negative is counter-clockwise),
         stopping by using the given StopAction.
         """
-        c = 10.75
+        c = 10.7
         self.left_wheel.reset_degrees_spun()
         self.right_wheel.reset_degrees_spun()
         if degrees > 0:

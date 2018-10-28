@@ -32,7 +32,7 @@ def run_polygon(n):
 
 def run_polygon_straight():
     robot = rb.Snatch3rRobot()
-    robot.drive_system.go_straight_inches(10)
+    robot.drive_system.go_straight_inches(20)
 
 def run_polygon_turn(degree):
     robot = rb.Snatch3rRobot()
