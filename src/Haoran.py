@@ -25,11 +25,9 @@ def run_test_polygon():
     run_polygon(6)
 
 def run_polygon(n):
-
     degree = 360/n
     for _ in range(n):
         run_polygon_straight()
-
         run_polygon_turn(degree)
 
 def run_polygon_straight():
