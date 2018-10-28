@@ -138,6 +138,7 @@ class DriveSystem(object):
 
             if self.right_wheel.get_degrees_spun() >= degrees * c:
                 self.stop_moving(stop_action)
+                break
 
     def turn_degrees(self,
                      degrees,
