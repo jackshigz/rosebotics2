@@ -17,12 +17,12 @@ def main():
 def black_line():
 
     robot = rb.Snatch3rRobot()
-
-    robot.drive_system.move_for_seconds(10)
     while True:
-
-        if robot.color_sensor.get_value() < 50:
-            robot.drive_system.turn_degrees(1)
+        if robot.color_sensor.get_reflected_intensity() <= 50:
+            robot.drive_system.start_moving(80, 80)
+        elif robot.color_sensor.get_reflected_intensity() > 50:
+            robot.drive_system.left_wheel.start_spinning(80)
+            robot.drive_system.right_wheel.stop_spinning(stop_action='brake')
 
 
 def run_test_see_color():
