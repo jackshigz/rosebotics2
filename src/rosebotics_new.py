@@ -424,7 +424,7 @@ class Camera(object):
        their colleagues, the entire team, and PUT_YOUR_NAME_HERE.
     """
 
-    def __init__(self, port=ev3.INPUT_3):
+    def __init__(self, port=ev3.INPUT_2):
         self.low_level_camera = ev3.Sensor(port, driver_name="pixy-lego")
         self.set_signature("SIG1")
 
