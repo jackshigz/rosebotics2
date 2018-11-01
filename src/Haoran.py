@@ -42,8 +42,7 @@ def run_polygon_turn(degree):
 
 def run_test_beep_when_see():
     robot = rb.Snatch3rRobot()
-    if robot.camera.get_biggest_blob() >= 600:
-        ev3.Sound.beep().wait()
+    ev3.Sound.beep().wait()
 
 
 
