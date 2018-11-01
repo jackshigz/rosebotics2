@@ -736,6 +736,11 @@ class ArmAndClaw(object):
         """
         # TODO: Do this as STEP 1 of implementing this class.
 
+        while True:
+            self.motor.start_spinning(100)
+            if self.touch_sensor:
+                self.motor.stop_spinning()
+
     def move_arm_to_position(self, position):
         """
         Spin the arm's motor until it reaches the given position.
