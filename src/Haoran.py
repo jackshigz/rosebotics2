@@ -42,8 +42,11 @@ def run_polygon_turn(degree):
 
 def run_test_beep_when_see():
     robot = rb.Snatch3rRobot()
-    if robot.Blob.get_area() >= 600:
-        ev3.Sound.beep().wait()
+    while True:
+
+        if robot.Blob.get_area() >= 600:
+            ev3.Sound.beep().wait()
+            break
 
 
 
