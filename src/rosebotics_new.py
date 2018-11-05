@@ -301,7 +301,8 @@ class TouchSensor(low_level_rb.TouchSensor):
 
     def is_pressed(self):
         """ Returns True if the TouchSensor is currently pressed. """
-        return self.get_value() == 1
+        if self.get_value() == 1:
+            return True
 
     def wait_until_pressed(self):
         """ Waits (doing nothing new) until the touch sensor is pressed. """
@@ -726,6 +727,11 @@ class ArmAndClaw(object):
         (Hence, 0 means all the way DOWN and 14.2 * 360 means all the way UP).
         """
         # TODO: Do this as STEP 2 of implementing this class.
+
+        while True:
+            self.motor.start_spinning(100)
+            if self.touch_sensor:
+                self.motor.start_spinning(-100)
 
     def raise_arm_and_close_claw(self):
         """
