@@ -12,8 +12,8 @@ def main():
     """ Runs YOUR specific part of the project """
     # run_test_go_straight_inches()
     # run_test_turn_degrees()
-    # run_test_polygon()
-    run_test_beep_when_see()
+    run_test_polygon()
+    #run_test_beep_when_see()
 
 def run_test_go_straight_inches():
     robot = rb.Snatch3rRobot()
@@ -33,7 +33,9 @@ def run_polygon(n):
         run_polygon_turn(degree)
 
 def run_polygon_straight():
+    print("a")
     robot = rb.Snatch3rRobot()
+    print("b")
     robot.drive_system.go_straight_inches(20)
 
 def run_polygon_turn(degree):
