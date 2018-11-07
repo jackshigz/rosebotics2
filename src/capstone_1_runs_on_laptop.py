@@ -90,8 +90,8 @@ def handle_go_forward(entry, mqtt):
     # TODO:    necessary for the entry_box constructed in  setup_gui
     # TODO:    to make its way to this function.  When done, delete this TODO.
     # --------------------------------------------------------------------------
-    speed = entry.get()
-    mqtt.send_message('go_forward', [speed])
+    speed_string = entry.get()
+    mqtt.send_message('go_forward', [speed_string])
     # --------------------------------------------------------------------------
     # TODO: 7. For this function to tell the robot what to do, it needs
     # TODO:    the MQTT client constructed in main.  Make the 4 changes
