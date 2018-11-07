@@ -740,7 +740,7 @@ class ArmAndClaw(object):
         Stop when the touch sensor is pressed.
         """
         # DONE: Do this as STEP 1 of implementing this class.
-        self.motor.start_spinning(-100)
+        self.motor.start_spinning(100)
         while True:
 
             if self.touch_sensor.is_pressed():
