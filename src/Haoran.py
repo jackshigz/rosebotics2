@@ -13,7 +13,8 @@ def main():
     # run_test_go_straight_inches()
     # run_test_turn_degrees()
     # run_test_polygon()
-    run_test_beep_when_see()
+    # run_test_beep_when_see()
+    run_test_go_forward_beacon()
 
 def run_test_go_straight_inches():
     robot = rb.Snatch3rRobot()
@@ -48,6 +49,9 @@ def run_test_beep_when_see():
             ev3.Sound.beep().wait()
             break
 
+def run_test_go_forward_beacon():
+    robot = rb.Snatch3rRobot()
+    while True
 
 
 main()
