@@ -757,6 +757,6 @@ class ArmAndClaw(object):
         self.motor.reset_degrees_spun()
         self.motor.start_spinning(100)
         while True:
-             if self.motor.get_degrees_spun() >= 360 * position
-                 self.motor.stop_spinning()
-                 break
+            if self.motor.get_degrees_spun() >= 360 * position:
+                self.motor.stop_spinning()
+                break
