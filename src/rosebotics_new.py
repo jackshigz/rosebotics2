@@ -722,6 +722,7 @@ class ArmAndClaw(object):
         """
         # DONE: Do this as STEP 2 of implementing this class.
 
+
         self.raise_arm_and_close_claw()
         self.motor.reset_degrees_spun()
         self.motor.start_spinning(-100)
