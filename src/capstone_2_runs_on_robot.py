@@ -7,7 +7,7 @@ Also: responds to Beacon button-presses by beeping, speaking.
 This module runs on the ROBOT.
 It uses MQTT to RECEIVE information from a program running on the LAPTOP.
 
-Authors:  David Mutchler, his colleagues, and PUT_YOUR_NAME_HERE.
+Authors:  David Mutchler, his colleagues, and Haoran Shi.
 """
 # ------------------------------------------------------------------------------
 # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.  Then delete this TODO.
