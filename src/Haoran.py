@@ -12,8 +12,9 @@ def main():
     """ Runs YOUR specific part of the project """
     # run_test_go_straight_inches()
     # run_test_turn_degrees()
-    run_test_polygon()
-    #run_test_beep_when_see()
+    # run_test_polygon()
+    # run_test_beep_when_see()
+    run_test_go_forward_beacon()
 
 def run_test_go_straight_inches():
     robot = rb.Snatch3rRobot()
@@ -43,11 +44,14 @@ def run_polygon_turn(degree):
 def run_test_beep_when_see():
     robot = rb.Snatch3rRobot()
     while True:
-
-        if robot.Blob.get_area() >= 600:
+        blob = robot.camera.get_biggest_blob()
+        if blob.get_area() >= 1000:
             ev3.Sound.beep().wait()
             break
 
+def run_test_go_forward_beacon():
+    robot = rb.Snatch3rRobot()
+    while True
 
 
 main()
