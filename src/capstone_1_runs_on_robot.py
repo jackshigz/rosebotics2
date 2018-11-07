@@ -60,6 +60,7 @@ def main():
         # ----------------------------------------------------------------------
         time.sleep(0.01)  # For the delegate to do its work
 
+
 class RemoteControlEtc(object):
 
     def __init__(self, robot):
