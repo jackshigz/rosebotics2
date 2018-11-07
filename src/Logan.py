@@ -43,7 +43,7 @@ def see_color(color):
 def raise_arm():
     robot = rb.Snatch3rRobot()
 
-    robot.arm.raise_arm_and_close_claw()
-
+    # robot.arm.raise_arm_and_close_claw()
+    # robot.arm.calibrate()
 
 main()

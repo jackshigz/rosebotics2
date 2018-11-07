@@ -130,7 +130,7 @@ class Snatch3rRobot(object):
         """
         self.touch_sensor = TouchSensor(touch_sensor_port)
         self.color_sensor = ColorSensor(color_sensor_port)
-        # self.camera = Camera(camera_port)
+        self.camera = Camera(camera_port)
 
         self.proximity_sensor = InfraredAsProximitySensor(ir_sensor_port)
         self.beacon_sensor = InfraredAsBeaconSensor(channel=1)
@@ -608,7 +608,6 @@ class InfraredAsBeaconButtonSensor(object):
             "beacon": BEACON_BUTTON
         }
 
-
     def set_channel(self, channel):
         """
         Makes this sensor look for signals on the given channel. The physical
@@ -723,10 +722,24 @@ class ArmAndClaw(object):
         """
         # TODO: Do this as STEP 2 of implementing this class.
 
-        while True:
-            self.motor.start_spinning(100)
-            if self.touch_sensor:
-                self.motor.start_spinning(-100)
+        # self.motor.start_spinning(100)
+        # while True:
+
+           # if self.touch_sensor.is_pressed():
+               # self.motor.start_spinning(-100)
+            # self.motor.reset_degrees_spun()
+            # if self.motor.get_degrees_spun() >= 14.2:
+               # self.motor.stop_spinning()
+
+        self.raise_arm_and_close_claw()
+        self.motor.reset_degrees_spun()
+        self.motor.start_spinning(-100)
+        #while True:
+            #if abs(self.motor.get_degrees_spun()) >= 14.2 * 360:
+                #self.motor.stop_spinning()
+                #break
+
+
 
     def raise_arm_and_close_claw(self):
         """
@@ -736,10 +749,10 @@ class ArmAndClaw(object):
         Stop when the touch sensor is pressed.
         """
         # TODO: Do this as STEP 1 of implementing this class.
-
+        self.motor.start_spinning(-100)
         while True:
-            self.motor.start_spinning(100)
-            if self.touch_sensor:
+
+            if self.touch_sensor.is_pressed():
                 self.motor.stop_spinning()
 
     def move_arm_to_position(self, position):
