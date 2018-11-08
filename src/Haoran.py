@@ -10,11 +10,11 @@ import time
 
 def main():
     """ Runs YOUR specific part of the project """
-    # run_test_go_straight_inches()
+    run_test_go_straight_inches()
     # run_test_turn_degrees()
     # run_test_polygon()
     # run_test_beep_when_see()
-    run_test_go_forward_beacon()
+    # run_test_go_forward_beacon()
 
 def run_test_go_straight_inches():
     robot = rb.Snatch3rRobot()
@@ -29,9 +29,12 @@ def run_test_polygon():
 
 def run_polygon(n):
     degree = 360/n
+    robot = rb.Snatch3rRobot()
     for _ in range(n):
-        run_polygon_straight()
-        run_polygon_turn(degree)
+        robot.drive_system.go_straight_inches(20)
+        robot.drive_system.turn_degrees(degree)
+        # run_polygon_straight()
+        # run_polygon_turn(degree)
 
 def run_polygon_straight():
     robot = rb.Snatch3rRobot()
@@ -51,7 +54,11 @@ def run_test_beep_when_see():
 
 def run_test_go_forward_beacon():
     robot = rb.Snatch3rRobot()
-    while True
+    while True:
+
+        if robot.beacon_button_sensor.is_bottom_blue_button_pressed() == True:
+            robot.drive_system.go_straight_inches(20)
+            break
 
 
 main()

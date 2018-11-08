@@ -249,7 +249,7 @@ class DriveSystem(object):
         while True:
 
             if self.right_wheel.get_degrees_spun() >= degrees * c:
-                self.stop_moving(stop_action)
+                self.stop_moving()
                 break
 
     def turn_degrees(self,
@@ -278,13 +278,13 @@ class DriveSystem(object):
             self.left_wheel.start_spinning(duty_cycle_percent)
             while True:
                 if self.left_wheel.get_degrees_spun() >= degrees*c:
-                    self.stop_moving(stop_action)
+                    self.stop_moving()
                     break
         if degrees < 0:
             self.right_wheel.start_spinning(duty_cycle_percent)
             while True:
                 if self.right_wheel.get_degrees_spun() >= -degrees*c:
-                    self.stop_moving(stop_action)
+                    self.stop_moving()
                     break
 
 
