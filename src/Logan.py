@@ -10,8 +10,8 @@ import time
 def main():
     """ Runs YOUR specific part of the project """
 
-    # black_line()
-    run_test_see_color()
+    black_line()
+    # run_test_see_color()
     # raise_arm()
 
 
