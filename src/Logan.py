@@ -41,11 +41,8 @@ def run_test_see_color():
 def see_color(n):
     robot = rb.Snatch3rRobot()
 
-    print('before')
     robot.drive_system.start_moving(80, 80)
     while True:
-
-        print(robot.color_sensor.get_color())
         if robot.color_sensor.get_color() == n:
 
             robot.drive_system.stop_moving()
