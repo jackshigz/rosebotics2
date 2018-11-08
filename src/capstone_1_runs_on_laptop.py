@@ -51,18 +51,19 @@ import mqtt_remote_method_calls as com
 
 def main():
     """ Constructs and runs a GUI for this program. """
-    root = tkinter.Tk()
-    mqtt = com.MqttClient()
-    mqtt.connect_to_ev3()
-    setup_gui(root, mqtt)
+    # root = tkinter.Tk()
+    # mqtt = com.MqttClient()
+    # mqtt.connect_to_ev3()
+    # setup_gui(root, mqtt)
 
-    root.mainloop()
+    # root.mainloop()
     # --------------------------------------------------------------------------
     # DONE: 5. Add code above that constructs a   com.MqttClient   that will
     # DONE:    be used to send commands to the robot.  Connect it to this pc.
     # DONE:    Test.  When OK, delete this DONE.
     # --------------------------------------------------------------------------
 
+    final_project()
 
 def setup_gui(root_window, mqtt):
     """ Constructs and sets up widgets on the given window. """
@@ -113,5 +114,24 @@ def handle_go_forward(entry, mqtt):
     # TODO:    Test by using a PRINT statement.  When done, delete this TODO.
     # --------------------------------------------------------------------------
 
+
+def final_project():
+
+    root = tkinter.Tk()
+
+    frame1 = ttk.Frame(root, padding=80)
+    frame1.grid()
+
+    entry_box1 = ttk.Entry(frame1)
+    entry_box1.grid()
+
+    button1 = ttk.Button(frame1, text='Nightman')
+    # button1['command'] = (lambda: )
+    button1.grid()
+
+
+
+
+    root.mainloop()
 
 main()
