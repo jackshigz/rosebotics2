@@ -10,8 +10,8 @@ import time
 def main():
     """ Runs YOUR specific part of the project """
 
-    black_line()
-    # run_test_see_color()
+    # black_line()
+    run_test_see_color()
     # raise_arm()
 
 
@@ -44,6 +44,7 @@ def see_color(color):
         robot.drive_system.go_straight_inches(10, 80)
         if robot.color_sensor.get_color() == color:
             robot.drive_system.stop_moving()
+            break
 
 
 def raise_arm():
