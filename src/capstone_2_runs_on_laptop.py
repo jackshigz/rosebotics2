@@ -72,6 +72,7 @@ def setup_gui(root_window,mqtt_client):
     frame.grid()
 
     color_entry_box = ttk.Entry(frame)
+
     go_forward_button = ttk.Button(frame, text="Start Doing Stuff")
 
     color_entry_box.grid()
@@ -81,11 +82,11 @@ def setup_gui(root_window,mqtt_client):
         lambda: handle_go_forward(color_entry_box,mqtt_client)
 
 
-def handle_go_forward(entry_box,mqtt_client):
+def handle_go_forward(color_entry_box,mqtt_client):
     """
     Tells the robot to go forward at the speed specified in the given entry box.
     """
-    color_string = entry_box.get()
+    color_string = color_entry_box.get()
     print("Sending the do stuff message with color string",color_string)
     mqtt_client.send_message('do_stuff',[color_string])
 

@@ -78,20 +78,40 @@ class RemoteControlEtc(object):
         """Make the robot do stuff according to the given color if it is checked"""
         print("Telling the robot to do stuff according to",color_string)
         color = int(color_string)
+
+        initial_time = time.time()
         while True:
+
             if self.robot.color_sensor.get_color() == color:
                 if color == 1:
                     do_color_1()
+                    break
                 if color == 4:
                     do_color_4()
+                    break
                 if color == 6:
                     do_color_6()
+                    break
                 else:
                     do_other_color()
-            else:
+                    break
+            if time.time() - initial_time == 10:
                 self.robot.drive_system.turn_degrees(-30)
                 self.robot.drive_system.turn_degrees(60)
                 self.robot.drive_system.turn_degrees(-30)
                 ev3.Sound.beep().wait()
                 ev3.Sound.beep().wait()
+                break
+
+    def do_color_1(self):
+        self.robot.drive_system.go_straight_inches(10)
+        self.robot.drive_system.turn_degrees(45)
+        self.robot.drive_system.go_straight_inches(5)
+        self.robot.drive_system.turn_degrees(-45)
+        self.robot.drive_system.go_straight_inches(-10)
+        self.robot.drive_system.spin_in_place_degrees(-90)
+        self.robot.drive_system.go_straight_inches(5)
+        self.robot.drive_system.turn_degrees(90)
+
+    def
 main()
