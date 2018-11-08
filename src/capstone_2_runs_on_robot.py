@@ -84,16 +84,16 @@ class RemoteControlEtc(object):
 
             if self.robot.color_sensor.get_color() == color:
                 if color == 1:
-                    do_color_1()
+                    self.do_color_1()
                     break
                 if color == 4:
-                    do_color_4()
+                    self.do_color_4()
                     break
                 if color == 6:
-                    do_color_6()
+                    self.do_color_6()
                     break
                 else:
-                    do_other_color()
+                    self.do_other_color()
                     break
             if time.time() - initial_time == 10:
                 self.robot.drive_system.turn_degrees(-30)
@@ -113,5 +113,9 @@ class RemoteControlEtc(object):
         self.robot.drive_system.go_straight_inches(5)
         self.robot.drive_system.turn_degrees(90)
 
-    def
+    def do_color_4(self):
+        degree = 360/4
+        for _ in range(4):
+            self.drive_system.go_straight_inches(20)
+            self.drive_system.turn_degrees(degree)
 main()
