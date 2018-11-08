@@ -34,15 +34,20 @@ def black_line():
 
 def run_test_see_color():
 
-    see_color('red')
+    # Run until red is seen
+    see_color(6)
 
 
-def see_color(color):
+def see_color(n):
     robot = rb.Snatch3rRobot()
 
+    print('before')
+    robot.drive_system.start_moving(80, 80)
     while True:
-        robot.drive_system.go_straight_inches(10, 80)
-        if robot.color_sensor.get_color() == color:
+
+        print(robot.color_sensor.get_color())
+        if robot.color_sensor.get_color() == n:
+
             robot.drive_system.stop_moving()
             break
 
