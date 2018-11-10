@@ -126,9 +126,10 @@ def final_project():
     entry_box1.grid()
 
     button1 = ttk.Button(frame1, text='Nightman')
-    # button1['command'] = (lambda: )
+    button1['command'] = (lambda: button_control())
     button1.grid()
 
+def button_control():
 
 
 
