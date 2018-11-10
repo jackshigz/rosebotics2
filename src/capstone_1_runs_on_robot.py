@@ -82,5 +82,26 @@ class RemoteControlEtc(object):
         speed = int(speed_string)
         self.robot.drive_system.start_moving(speed, speed)
 
+    def stop_moving(self):
+        self.robot.drive_system.stop_moving()
 
-main()
+
+def final_project():
+
+    robot = rb.Snatch3rRobot()
+
+    robot.drive_system.start_moving(80, 80)
+    while True:
+        if robot.color_sensor.get_reflected_intensity() <= 40:
+            robot.drive_system.stop_moving()
+            break
+
+    rc = RemoteControlEtc(robot)
+    mqtt = com.MqttClient(rc)
+    mqtt.connect_to_pc()
+
+    while True:
+        time.sleep(0.1)
+
+
+final_project()

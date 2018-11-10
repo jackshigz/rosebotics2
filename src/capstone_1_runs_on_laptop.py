@@ -53,19 +53,20 @@ import ev3dev.ev3 as ev3
 
 def main():
     """ Constructs and runs a GUI for this program. """
-    # root = tkinter.Tk()
-    # mqtt = com.MqttClient()
-    # mqtt.connect_to_ev3()
+    root = tkinter.Tk()
+    mqtt = com.MqttClient()
+    mqtt.connect_to_ev3()
     # setup_gui(root, mqtt)
 
-    # root.mainloop()
     # --------------------------------------------------------------------------
     # DONE: 5. Add code above that constructs a   com.MqttClient   that will
     # DONE:    be used to send commands to the robot.  Connect it to this pc.
     # DONE:    Test.  When OK, delete this DONE.
     # --------------------------------------------------------------------------
 
-    final_project()
+    final_project(root, mqtt)
+
+    root.mainloop()
 
 def setup_gui(root_window, mqtt):
     """ Constructs and sets up widgets on the given window. """
@@ -117,17 +118,7 @@ def handle_go_forward(entry, mqtt):
     # --------------------------------------------------------------------------
 
 
-def final_project():
-
-    robot = rb.Snatch3rRobot()
-
-    robot.drive_system.start_moving(80, 80)
-    while True:
-        if robot.color_sensor.get_reflected_intensity() <= 40:
-            robot.drive_system.stop_moving()
-            break
-
-    root = tkinter.Tk()
+def final_project(root, mqtt):
 
     frame1 = ttk.Frame(root, padding=80)
     frame1.grid()
@@ -136,20 +127,17 @@ def final_project():
     entry_box1.grid()
 
     button1 = ttk.Button(frame1, text='Should I continue?')
-    button1['command'] = (lambda: move_forward_or_stop(entry_box1, robot))
+    button1['command'] = (lambda: move_forward_or_stop(entry_box1, mqtt))
     button1.grid()
 
-    root.mainloop()
 
-
-def move_forward_or_stop(entry_box, robot):
+def move_forward_or_stop(entry_box, mqtt):
 
     if entry_box.get() == 'Yes':
-        final_project()
+        c = str(80)
+        mqtt.send_message('go_forward', [c])
     if entry_box.get() == 'No':
-        a = robot.drive_system.left_wheel.get_degrees_spun() * 87
-        b = str(a)
-        ev3.Sound.speak('Inches traveled was', b)
+        mqtt.send_message('stop_moving')
 
 
 main()
