@@ -90,8 +90,8 @@ def handle_go_forward(size_entry_box1,size_entry_box2,mqtt_client):
     """
     size1_string = size_entry_box1.get()
     size2_string = size_entry_box2.get()
-    print("Sending the do stuff message with color string",size1_string,size2_string)
-    mqtt_client.send_message('do_stuff',[size1_string],[size2_string])
+    print("Sending the do stuff message with size string",size1_string,size2_string)
+    mqtt_client.send_message('do_stuff',[size1_string,size2_string])
 
     # --------------------------------------------------------------------------
     # TODO: 6. This function needs the entry box in which the user enters

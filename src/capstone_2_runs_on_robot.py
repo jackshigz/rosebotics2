@@ -83,6 +83,7 @@ class RemoteControlEtc(object):
         initial_time = time.time()
         while True:
             blob = self.robot.camera.get_biggest_blob()
+            print(blob.get_area())
             if  blob.get_area() >= size1:
                 if blob.get_area() <= size2:
                     self.do_thing_1()
