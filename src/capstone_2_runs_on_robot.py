@@ -80,7 +80,7 @@ class RemoteControlEtc(object):
         size1 = int(size1_string)
         size2 = int(size2_string)
 
-        initial_time = time.time()
+        time1 = time.time()
         while True:
             blob = self.robot.camera.get_biggest_blob()
             print(blob.get_area())
@@ -90,15 +90,16 @@ class RemoteControlEtc(object):
                     break
                 else:
                     self.robot.drive_system.spin_in_place_degrees(1080)
-            else:
-                self.do_other_thing()
-                break
-            if time.time() - initial_time == 10:
+                    break
+            if time.time() - time1 >= 10:
                 self.robot.drive_system.turn_degrees(-30)
                 self.robot.drive_system.turn_degrees(60)
                 self.robot.drive_system.turn_degrees(-30)
                 ev3.Sound.beep().wait()
                 ev3.Sound.beep().wait()
+                break
+            else:
+                self.do_other_thing()
                 break
 
     def do_thing_1(self):
@@ -115,6 +116,6 @@ class RemoteControlEtc(object):
         degree = 360/4
         self.robot.drive_system.go_straight_inches(5)
         for _ in range(4):
-            self.drive_system.go_straight_inches(20)
-            self.drive_system.turn_degrees(degree)
+            self.robot.drive_system.go_straight_inches(20)
+            self.robot.drive_system.turn_degrees(degree)
 main()
