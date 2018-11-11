@@ -89,15 +89,19 @@ class RemoteControlEtc(object):
 
         self.robot.drive_system.start_moving(80, 80)
         while True:
-            if self.robot.color_sensor.get_color() == 6:
-                print(self.robot.drive_system.left_wheel.get_degrees_spun() * 87)
-                self.robot.drive_system.spin_in_place_degrees(360)
+            if self.robot.color_sensor.get_color() == 5:
+                self.robot.drive_system.stop_moving()
                 break
+        self.robot.drive_system.spin_in_place_degrees(460)
+        c = (self.robot.drive_system.left_wheel.get_degrees_spun() +
+             self.robot.drive_system.right_wheel.get_degrees_spun()) / 2
+        print('Robot traveled', c / 87, 'inches')
+
+
+robot = rb.Snatch3rRobot()
 
 
 def final_project():
-
-    robot = rb.Snatch3rRobot()
 
     robot.drive_system.start_moving(80, 80)
     while True:
