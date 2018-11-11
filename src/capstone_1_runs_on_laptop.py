@@ -134,8 +134,7 @@ def final_project(root, mqtt):
 def move_forward_or_stop(entry_box, mqtt):
 
     if entry_box.get() == 'Yes':
-        c = str(80)
-        mqtt.send_message('see_color', [c])
+        mqtt.send_message('see_color')
     if entry_box.get() == 'No':
         mqtt.send_message('stop_moving')
 

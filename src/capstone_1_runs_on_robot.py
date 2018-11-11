@@ -85,6 +85,15 @@ class RemoteControlEtc(object):
     def stop_moving(self):
         self.robot.drive_system.stop_moving()
 
+    def see_color(self):
+
+        self.robot.drive_system.start_moving(80, 80)
+        while True:
+            if self.robot.color_sensor.get_color() == 6:
+                print(self.robot.drive_system.left_wheel.get_degrees_spun() * 87)
+                self.robot.drive_system.spin_in_place_degrees(360)
+                break
+
 
 def final_project():
 
@@ -102,18 +111,6 @@ def final_project():
 
     while True:
         time.sleep(0.1)
-
-
-def see_color():
-
-    robot = rb.Snatch3rRobot()
-
-    robot.drive_system.start_moving(80, 80)
-    while True:
-        if robot.color_sensor.get_color() == 6:
-            print(robot.drive_system.left_wheel.get_degrees_spun() * 87)
-            robot.drive_system.spin_in_place_degrees(360)
-            break
 
 
 final_project()
