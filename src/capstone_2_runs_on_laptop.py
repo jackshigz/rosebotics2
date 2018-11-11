@@ -71,24 +71,27 @@ def setup_gui(root_window,mqtt_client):
     frame = ttk.Frame(root_window, padding=10)
     frame.grid()
 
-    color_entry_box = ttk.Entry(frame)
+    size_entry_box1 = ttk.Entry(frame)
+    size_entry_box2 = ttk.Entry(frame)
 
     go_forward_button = ttk.Button(frame, text="Start Doing Stuff")
 
-    color_entry_box.grid()
+    size_entry_box1.grid()
+    size_entry_box2.grid()
     go_forward_button.grid()
 
     go_forward_button['command'] = \
-        lambda: handle_go_forward(color_entry_box,mqtt_client)
+        lambda: handle_go_forward(size_entry_box1,size_entry_box2,mqtt_client)
 
 
-def handle_go_forward(color_entry_box,mqtt_client):
+def handle_go_forward(size_entry_box1,size_entry_box2,mqtt_client):
     """
     Tells the robot to go forward at the speed specified in the given entry box.
     """
-    color_string = color_entry_box.get()
-    print("Sending the do stuff message with color string",color_string)
-    mqtt_client.send_message('do_stuff',[color_string])
+    size1_string = size_entry_box1.get()
+    size2_string = size_entry_box2.get()
+    print("Sending the do stuff message with color string",size1_string,size2_string)
+    mqtt_client.send_message('do_stuff',[size1_string],[size2_string])
 
     # --------------------------------------------------------------------------
     # TODO: 6. This function needs the entry box in which the user enters

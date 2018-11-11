@@ -74,27 +74,24 @@ class RemoteControlEtc(object):
         speed = int(speed_string)
         self.robot.drive_system.start_moving(speed,speed)
 
-    def do_stuff(self,color_string):
+    def do_stuff(self,size1_string,size2_string):
         """Make the robot do stuff according to the given color if it is checked"""
-        print("Telling the robot to do stuff according to",color_string)
-        color = int(color_string)
+        print("Telling the robot to do stuff according to",size1_string,size2_string)
+        size1 = int(size1_string)
+        size2 = int(size2_string)
 
         initial_time = time.time()
         while True:
-
-            if self.robot.color_sensor.get_color() == color:
-                if color == 1:
-                    self.do_color_1()
-                    break
-                if color == 4:
-                    self.do_color_4()
-                    break
-                if color == 6:
-                    self.do_color_6()
+            blob = self.robot.camera.get_biggest_blob()
+            if  blob.get_area() >= size1:
+                if blob.get_area() <= size2:
+                    self.do_thing_1()
                     break
                 else:
-                    self.do_other_color()
-                    break
+                    self.robot.drive_system.spin_in_place_degrees(1080)
+            else:
+                self.do_other_thing()
+                break
             if time.time() - initial_time == 10:
                 self.robot.drive_system.turn_degrees(-30)
                 self.robot.drive_system.turn_degrees(60)
@@ -103,7 +100,7 @@ class RemoteControlEtc(object):
                 ev3.Sound.beep().wait()
                 break
 
-    def do_color_1(self):
+    def do_thing_1(self):
         self.robot.drive_system.go_straight_inches(10)
         self.robot.drive_system.turn_degrees(45)
         self.robot.drive_system.go_straight_inches(5)
@@ -113,8 +110,9 @@ class RemoteControlEtc(object):
         self.robot.drive_system.go_straight_inches(5)
         self.robot.drive_system.turn_degrees(90)
 
-    def do_color_4(self):
+    def do_other_thing(self):
         degree = 360/4
+        self.robot.drive_system.go_straight_inches(5)
         for _ in range(4):
             self.drive_system.go_straight_inches(20)
             self.drive_system.turn_degrees(degree)
