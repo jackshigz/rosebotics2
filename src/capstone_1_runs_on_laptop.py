@@ -126,7 +126,7 @@ def final_project(root, mqtt):
     entry_box1 = ttk.Entry(frame1)
     entry_box1.grid()
 
-    button1 = ttk.Button(frame1, text='Should I continue?')
+    button1 = ttk.Button(frame1, text='Should I continue to Red?')
     button1['command'] = (lambda: move_forward_or_stop(entry_box1, mqtt))
     button1.grid()
 
@@ -135,7 +135,7 @@ def move_forward_or_stop(entry_box, mqtt):
 
     if entry_box.get() == 'Yes':
         c = str(80)
-        mqtt.send_message('go_forward', [c])
+        mqtt.send_message('see_color', [c])
     if entry_box.get() == 'No':
         mqtt.send_message('stop_moving')
 
