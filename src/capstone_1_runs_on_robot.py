@@ -92,9 +92,9 @@ class RemoteControlEtc(object):
             if self.robot.color_sensor.get_color() == 5:
                 self.robot.drive_system.stop_moving()
                 break
-        self.robot.drive_system.spin_in_place_degrees(460)
+        self.robot.drive_system.spin_in_place_degrees(415)
         c = (self.robot.drive_system.left_wheel.get_degrees_spun() +
-             self.robot.drive_system.right_wheel.get_degrees_spun()) / 2
+             self.robot.drive_system.right_wheel.get_degrees_spun())
         print('Robot traveled', c / 87, 'inches')
 
 
